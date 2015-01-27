@@ -1,0 +1,235 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#EC407A;
+    background-image:linear-gradient(top, #A7A7A7 0%, #EC407A 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #EC407A 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #EC407A 51%);
+    background-image:-webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #EC407A),
+    color-stop(1, #E91E63 ) 
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+html,body { height:100%; }
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+        /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.contents{
+    width: 100%;
+    height: 100%;
+}
+
+.ballContainer{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto;
+    width:57.15mm;
+    height: 57.15mm;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    transition: transform 60ms ease-out;
+    -webkit-transition: -webkit-transform 150ms ease-out;
+}
+
+.ball{
+    position: absolute;
+    width:100%;
+    height:100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 50%;
+    -moz-box-shadow: 50%;
+    box-shadow: 0px 12px 12px 2px rgba(0,0,0,0.5); 
+    -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
+    transition: opacity 0.6s, transform 0.6s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 4;
+}
+
+.ballInnerCircle{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width:57%;
+    height: 57%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #FFF;
+}
+
+.omote{
+    background: -moz-radial-gradient(rgba(75,75,75,1), rgba(25,25,25,1));
+    background: -webkit-gradient(radial, center top, 0, center top, 150, from(rgba(75,75,75, 1)), to(rgba(25,25,25,1)));
+}
+
+.flipped.omote{
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.ball.ura{
+    background: -moz-radial-gradient(rgba(75,75,75,1), rgba(25,25,25,1));
+    background: -webkit-gradient(radial, center top, 0, center top, 150, from(rgba(75,75,75, 1)), to(rgba(25,25,25,1)));
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.flipped.ura{
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+}
+
+.number{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: auto;
+    font-family: HelveticaNeue, メイリオ, sans-serif;
+    font-size: 100px;
+    text-align:center;
+
+    color: #444;
+}
+
+
+.fortuneWindow{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width:70%;
+    height: 70%;
+
+    padding : 5px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border:solid 3px;
+    border-color: #666;
+    background: -moz-radial-gradient(rgba(35,35,55,1), rgba(25,25,45,1));
+    background: -webkit-gradient(radial, center 55%, 0, center 55%, 120, from(rgba(65,65,165, 1)), to(rgba(35,35,45,1)));
+}
+
+.fortune{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #EEE;
+    word-wrap: normal;
+}

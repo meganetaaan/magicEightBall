@@ -1,4 +1,5 @@
-[
+{"initialMsg" : "Ask me",
+    "fortunes" : [
 "It is certain",
 "It is decidedly so",
 "Without a doubt",
@@ -19,4 +20,4 @@
 "My sources say no",
 "Outlook not so good",
 "Very doubtful"
-]
+]}

@@ -26,48 +26,101 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/ripples.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/material.min.css"/>
 
         <!-- hifive -->
         <link rel="stylesheet" type="text/css" href="lib/h5-1.1.14.css" />
-        <!--[if lt IE 9]>
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-            <![endif]-->
-            <!--[if gte IE 9]><!-->
-                <script type="text/javascript" src="lib/jquery-2.1.3.min.js"></script>
-                <!--<![endif]-->
-                <script type="text/javascript" src="lib/h5-1.1.14.js"></script>
-                <!-- <script type="text/javascript" src="lib/h5-1.1.14.dev.js"></script> -->
+        <link href="//code.htmlhifive.com/h5.css" rel="stylesheet">
 
-                <title>The Magic 8 Ball</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <title>The Magic 8 Ball</title>
     </head>
     <body>
-        <div class="contents" id="eightBallContents">
-            <div class="ballContainer">
-                <div class="ball omote">
+        <div class="navbar navbar-material-teal-600 shadow-z-1" style="z-index: 3">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">8-Ball</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Change Language <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class='langButton' id="engButton" ><a href="javascript:void(0)">English</a></li>
+                            <li class='langButton' id="kanButton" ><a href="javascript:void(0)">関西弁</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right externalLink">
+                    <li><a href="about.html">About this App</a></li>
+                    <li><a href="http://www.htmlhifive.com/" target="_blank">Hifive Official</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--   <div class="header-panel shadow-z-2">
+            <div class="container-fluid">
+            <div class="row">
+            <div class="col-xs-3">
+            <h1>The Magic 8 Ball</h1>
+            </div>
+            </div>
+            </div>
+            </div>
+        -->
+        <div id="eightBallContents">
+            <div class="ballContainer"</div>
+            <div class="ballMover">
+                <div class="ball omote shadow-z-3">
                     <div class="ballInnerCircle">
                         <div class="number">8</div>
                     </div>
                 </div>
-                <div class="ball ura">
+                <div class="ball ura shadow-z-3">
                     <div class="fortuneWindow">
                         <div class="fortune">Ask me</div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
 
-        <script type="text/javascript" src="cordova.js"></script>
+        <!-- <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
 app.initialize();
         </script>
+        -->
+        <!--[if lt IE 9]>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <![endif]-->
+            <!--[if gte IE 9]><!-->
+                <script type="text/javascript" src="lib/jquery-2.1.3.min.js"></script>
+                <!--<![endif]-->
+                <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 
+                <!-- Latest compiled and minified JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+                <script type="text/javascript" src="js/ripples.min.js"></script>
+                <script type="text/javascript" src="js/material.min.js"></script>
+
+                <!-- hifive -->
+                <script src="//code.htmlhifive.com/ejs-h5mod.js"></script>
+                <script src="//code.htmlhifive.com/h5.js"></script>
                 <!-- hifive logics -->
                 <script type="text/javascript" src="js/eightBallLogic.js"></script>
 
                 <!-- hifive controllers -->
                 <script type="text/javascript" src="js/ShakeController.js"></script>
                 <script type="text/javascript" src="js/eightBallController.js"></script>
+                <script type="text/javascript" src="js/pageController.js"></script>
     </body>
 </html>

@@ -70,6 +70,9 @@
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <feature name="Media">
-            <param name="ios-package" value="CDVSound" />
+        <param name="ios-package" value="CDVSound" />
+    </feature>
+    <feature name="InAppBrowser">
+            <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
 </widget>

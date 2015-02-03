@@ -8,12 +8,12 @@ $(function() {
 		_startMovingThreshold : 10.0,
 		_stopMovingThreshold : 6.0,
 
-        _MOVEINTERVAL : 30,
+        _MOVEINTERVAL : 25,
         _lastMovedTimeMillis : 0,
 
         _counter : 0,
-        _countMax : 3,
-        _acs : {x : [0,0,0], y : [0,0,0]},
+        //_countMax : 3,
+        //_acs : {x : [0,0,0], y : [0,0,0]},
 
 		__name : 'jp.co.nssol.demo.ball.ShakeController',
 		__construct : function() {
@@ -34,15 +34,17 @@ $(function() {
 			context.event.preventDefault();
 			var currentTimeMillis = new Date().getTime();
 			var ac = context.event.originalEvent.acceleration;
-            this._counter += 1;
-            this._counter %= this._countMax;
-            this._acs.x[this._counter] = ac.x;
-            this._acs.y[this._counter] = ac.y;
+            //this._counter += 1;
+            //this._counter %= this._countMax;
+            //this._acs.x[this._counter] = ac.x;
+            //this._acs.y[this._counter] = ac.y;
 
             if (currentTimeMillis - this._lastMovedTimeMillis > this._MOVEINTERVAL){
                 this._lastMovedTimeMillis += this._MOVEINTERVAL;
-                var x = this._average(this._acs.x) * 1.5;
-                var y = -50 - this._average(this._acs.y) * 1.8;
+                var x = ac.x;
+                var y = ac.y;
+                //var x = this._average(this._acs.x);
+                //var y = this._average(this._acs.y);
                 this.trigger('move', {'x' : x, 'y' : y});
             }
 			// 直前のshakeから一定時間経っていなければ終了
